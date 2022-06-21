@@ -24,9 +24,9 @@ and model fit evaluation. These concepts are demonstrated by using a simple
 \maketitle
 \section{Introduction}
 Bayesian statistical methods have become popular in the field of psychometrics.
-Thanks to the development of general purpose Bayesian inference software (e.g
+Thanks to the development of general purpose Bayesian inference software (e.g.,
 \emph{Stan}; \cite{gelman_stan:_2015}), researchers are now able to quickly develop and
-fit sophisticated and complex psychometric models that once require significant
+fit sophisticated and complex psychometric models that once required significant
 computational expertise to estimate. \textcite{levy_rise_2009} gives a nice overview
 and survey of the applications of Bayesian estimation for psychometric models.
 Some examples of development in this area may include Bayesian estimation of a
@@ -38,23 +38,24 @@ response model \parencite{johnson_using_2003}. In addition, Bayesian
 methods also provide a class of approaches alternative to classical or
 frequentist statistics (e.g. maximum likelihood, confidence intervals,
 p-values). In certain cases, Bayesian approaches can alleviate some difficulties
-classical approaches may have. For instance, 
-\textcite{decarlo_recognizing_2012} proposed an
-Bayesian approach for estimating uncertain elements of the Q-matrix in a CDM
-model, \textcite{liu_three_2019} introduced a Bayesian nonparametric approach to
-ordered latent class models, \textcite{ozturk_bayesian_2017} developed a
-Bayesian robust IRT outlier detection model, and the applications of Bayesian
-model fit evaluations also have been explored for a variety of
-psychometric models (e.g. 
-\cite{sinharay_assessing_2007,sinharay_assessing_2005,sinharay_assessment_2015}). These
-mentioned examples of Bayesian methods in psychometrics are far from exhaustive.
+classical approaches may have. Examples of the use of Bayesian methods for psychometric modeling include estimating uncertain elements of the Q-matrix in a CDM
+model \parencite{decarlo_recognizing_2012}, nonparametric ordered latent class
+modeling \parencite{liu_three_2019}, robust IRT outlier detection 
+\parencite{ozturk_bayesian_2017}, and evaluating model fit 
+\parencite{sinharay_assessing_2007,sinharay_assessing_2005,sinharay_assessment_2015}. These mentioned examples of Bayesian methods in psychometrics are far from exhaustive.
 The main purpose of this entry is to give readers a brief introduction to some
 of the most essential concepts and steps involved in a Bayesian analysis of
 psychometric models.
 
+\section{Bayesian data analysis}
 Let $\bm{X}$ denote the observed random variables (i.e. the data), and $
 \bm{\theta}$ denote the vector of unobserved random variables (i.e. the
-parameters). A typical Bayesian analysis involves three essential steps:
+parameters). In Bayesian statistics, the parameters are treated as random and
+are given prior distributions. This is in contrast to the classical likelihood
+methods where parameters are treated as fixed but unknown parameters. We are
+typically interested in using the data to estimate and make inferences about the
+vector of unknown parameters. A Bayesian analysis involves three essential
+steps:
 \begin{enumerate}
   \item Model specification. In this step, we set up a full probability model
   that describes the joint probability distribution for all observed and
@@ -70,18 +71,22 @@ parameters). A typical Bayesian analysis involves three essential steps:
   sometimes, considerations for mathematical convenience.
 
   \item Posterior inference. In this step, we calculate and interpret the
-  \textit{posterior distribution}. The posterior distribution is the conditional
+  \textit{posterior distribution} from which we make inferences about the
+  parameters. The posterior distribution is the conditional
   distribution of the unobserved random variables (i.e. parameters) which we are
   typically interested in, given the observed data, i.e. $p(\bm{\theta}|\bm{X})
-  = p(\bm{\theta}, \bm{X}) / p(\bm{X})$. This is also known as Bayes' rule. To
-  obtain the density of the marginal distribution of the data, we need to
-  evaluate $p(\bm{X}) = \int p(\bm{X}|\bm{\theta})p(\bm{\theta}) d\bm{\theta}$.
-  Except for certain extremely simple models, this (potentially high
-  dimensional) integral cannot be evaluated analytically. Consequently, the
-  posterior is generally not availabe in closed forms. Instead, the posterior
-  distribution $p(\bm{\theta}|\bm{X})$ is usually approximated using sampling
-  methods such as the Markov chain Monte Carlo (MCMC; 
-  \cite{neal_probabilistic_1998,gelman_bayesian_2013}).
+  = p(\bm{\theta}, \bm{X}) / p(\bm{X}) = p(\bm{X}|\bm{\theta})p(\bm{\theta}) /
+  p(\bm{X})$. This is known as Bayes' rule. As a function of parameters $
+  \bm{\theta}$, $p(\bm{X}|\bm{\theta})$ is also referred to as the likelihood
+  function through which the data $\bm{X}$ influences the posterior distribution
+  of the parameters. To obtain the density of the marginal distribution of the
+  data, we need to evaluate $p(\bm{X}) = \int p(\bm{X}|\bm{\theta})p(
+  \bm{\theta}) d\bm{\theta}$. Except for certain extremely simple models, this 
+  (potentially high dimensional) integral cannot be evaluated analytically.
+  Consequently, the posterior is generally not available in closed forms.
+  Instead, the posterior distribution $p(\bm{\theta}|\bm{X})$ is usually
+  approximated using sampling methods such as the Markov chain Monte Carlo 
+  (MCMC; \cite{neal_probabilistic_1998,gelman_bayesian_2013}).
 
   \item Model fit evaluation. Once a model has been set up and the posterior
   distribution has been computed, it is important to assess the fit of the
@@ -97,6 +102,8 @@ parameters). A typical Bayesian analysis involves three essential steps:
   patterns (e.g. \cite{sinharay_assessment_2015}).
 \end{enumerate}
 
+These steps are applicable to Bayesian modeling for all applications. Bayesian
+psychometrics is the application of these steps to psychometric modeling.
 In the following sections, we demonstrate these essential steps of the Bayesian
 data analysis with a little more details by using a simple 1-parameter normal
 ogive IRT model as an example.
@@ -133,21 +140,19 @@ that the model is in its slope-intercept form,
   P(X_{ij} = 1 | \theta_i, \psi_j) = \Phi(\theta_i + \psi_j),
 \end{equation}
 and $\theta_i \sim N(0, a^2)$, where $a^2$ is the variance of the normal
-distribution. In Bayesian statistics, model parameters are treated as random and
-are given prior distributions. This is in contrast to the classical likelihood
-methods where model parameters are treated as fixed but unknown constants. A
-prior distribution describes any prior belief we may have (or the lack of it) on
-the parameter with uncertainty.
+distribution.
 
-For instance, in the current example, there may be reasonable prior information
-on the item parameter $\psi_j$ from similar items previously administered to a
+A prior distribution describes any prior belief we may have (or the lack of it)
+on the parameter with uncertainty. For instance, in the current example, there
+may be reasonable prior information on the item parameter $\psi_j$ from similar
+items previously administered to a
 comparable population of students. In this case, we may choose a normal prior
 with mean $\mu_{\psi_j}$ informed by prior information and variance $\sigma_
 {\psi_j}^2$ expressing the level of
 uncertainty, i.e. $\psi_j \sim N(\mu_{\psi_j}, \sigma_{\psi_j}^2)$. A prior with
 larger variance (or a flatter prior, see Figure~\ref{fig:prior_density}) is
-less informative, thus having less impact on the posterior inference of
-the parameter. 
+less informative and appropriate when there is greater uncertainty about a
+parameter, thus having less impact on the posterior inference of the parameter. 
 \begin{figure}[t]
 \centering
   \includegraphics[scale = 0.5]{Fig/prior_normal.png}
@@ -160,8 +165,9 @@ a hierarchical prior. For each item parameter $\psi_j$, we assign a same
 Gaussian prior, $\psi_j \sim N(\mu_\psi, \sigma_\psi^2)$. Hyper-priors are
 assigned to the parameters of this prior distribution, i.e. $\mu_\psi \sim N(0,
 10^2)$ and $\sigma_\psi^2 \sim Ga^{-1}(10^{-4}, 10^{-4})$, where $Ga^{-1}
-(\cdot)$ denotes the inverse-gamma distribution. The chosen inverse-gamma
-distribution is noninformative if most of the posterior density is away from $0$
+(\cdot)$ denotes the inverse-gamma distribution (see 
+\cite{gelman_bayesian_2013}, p.43). The chosen inverse-gamma distribution is
+noninformative if most of the posterior density is away from $0$
 as the prior density is flat in the tail. The choice of this set of priors is
 also mathematically convenient. The normal prior and inverse-gamma prior are
 conditionally conjugate for the model. A prior is said to be conjugate for the

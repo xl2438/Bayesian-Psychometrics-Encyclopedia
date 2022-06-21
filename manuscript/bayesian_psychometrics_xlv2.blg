@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'bayesian_psychometrics_xlv2.blg'
+[391] biber-MSWIN32:340> INFO - === 
+[483] Biber.pm:418> INFO - Reading 'bayesian_psychometrics_xlv2.bcf'
+[641] Biber.pm:972> INFO - Found 22 citekeys in bib section 0
+[661] Biber.pm:4383> INFO - Processing section 0
+[675] Biber.pm:4574> INFO - Looking for bibtex file 'lit.bib' for section 0
+[751] bibtex.pm:1713> INFO - LaTeX decoding ...
+[809] bibtex.pm:1518> INFO - Found BibTeX data source 'lit.bib'
+[1048] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1049] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1050] Biber.pm:4203> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[1050] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[1086] bbl.pm:654> INFO - Writing 'bayesian_psychometrics_xlv2.bbl' with encoding 'UTF-8'
+[1105] bbl.pm:757> INFO - Output to bayesian_psychometrics_xlv2.bbl
