@@ -102,8 +102,8 @@ steps:
   patterns (e.g. \cite{sinharay_assessment_2015}).
 \end{enumerate}
 
-These steps are applicable to Bayesian modeling for all applications. Bayesian
-psychometrics is the application of these steps to psychometric modeling.
+These steps are true to all Bayesian modeling applications. Bayesian
+psychometrics is an example of such applications to psychometric modeling. 
 In the following sections, we demonstrate these essential steps of the Bayesian
 data analysis with a little more details by using a simple 1-parameter normal
 ogive IRT model as an example.
@@ -254,7 +254,7 @@ a reference, see \cite{gelman_bayesian_2013}). Here, we state the results withou
 detailed derivations.
 
 Now we can summarize the Gibbs sampler. After assigning initial values to
-parameters, at the $T^{th}$ iteration,
+parameters, at the $M^{th}$ iteration,
 \begin{enumerate}
   \item for each $i$ and $j$, update $y_{ij}$ by drawing from $N(\theta_i +
   \psi_j, 1)T(0,)$ if $x_{ij} = 1$; else draw from $N(\theta_i + \psi_j, 1)T
@@ -381,8 +381,13 @@ predictive distribution of the sum scores. The result is in Figure~
   \label{fig:ppmc_raw_scores}
 \end{figure}
 The observed sum scores all fall within the $80\%$ HPD intervals of the posterior
-predictive distributions. The model does seem to be able to explain the
-distribution of number of correct responses well.
+predictive distributions. For a given set of observed data and a chosen
+model, the choice of the level of HPD intervals has an effect on their
+lengths. The smaller percentages are associated with shorter intervals,
+therefore representing a more strict criteria for evaluating model fit. The
+$80\%$ level is the default in the \textit{Stan} software which is widely used
+by applied researchers. In our case, The model does seem to be able to explain
+the distribution of number of correct responses well.
 
 \subsection{Polychoric correlation coefficient}
 An important assumption of the 1PNO IRT model is that discrimination parameters
@@ -433,10 +438,21 @@ examined statistic does not show evidence of violation of the LI assumption for
 this pair of items.
 
 \section{Conclusion}
-In this entry, we have introduced three essential steps of the Bayesian analysis
-of a psychometric model. Some more detailed concepts were demonstrated in the
-context of the 1PNO IRT example. For more comprehensive review of Bayesian
-methods, readers may refer to \textcite{gelman_bayesian_2013}.
+Thanks to the development of general purpose Bayesian inference software such as
+the Stan, applied researchers now has access to a set of powerful tools to
+develop and estimate complex and sophisticated Bayesian models. While the
+software can help automate the Bayesian computation, it should be emphasized
+that all three steps outlined earlier in the entry are important and integral
+parts of the Bayesian modeling. Especially, the importance of evaluating model
+fit should not be overlooked. A model is a set of assumptions.
+Drawing inferences based on assumptions without checking them can be dangerous.
+Furthermore, the Bayesian modeling is really a continuous process where
+researchers iterate through the three steps. After the aspects of model-data
+misfits are identified in model fit evaluations, the model can be expanded and
+improved. In this entry, we offered a high level introduction to the basics of
+Bayesian psychometrics. For a more detailed treatment of these introductory
+topics, readers may refer to \textcite{gelman_bayesian_2013,levy_bayesian_2016}.
+
 
 
 \printbibliography

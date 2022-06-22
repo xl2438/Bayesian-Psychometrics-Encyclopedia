@@ -2827,7 +2827,9 @@
     <bcf:citekey order="27">sinharay_assessing_2005</bcf:citekey>
     <bcf:citekey order="28">sinharay_assessing_2005</bcf:citekey>
     <bcf:citekey order="29">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="29">levy_bayesian_2016</bcf:citekey>
     <bcf:citekey order="30">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="30">levy_bayesian_2016</bcf:citekey>
     <bcf:citekey order="31">gelman_stan:_2015</bcf:citekey>
     <bcf:citekey order="32">levy_rise_2009</bcf:citekey>
     <bcf:citekey order="33">liu_estimating_2019</bcf:citekey>
@@ -2850,6 +2852,7 @@
     <bcf:citekey order="50">gelman_inference_1992</bcf:citekey>
     <bcf:citekey order="51">rizopoulos_ltm_2015</bcf:citekey>
     <bcf:citekey order="52">bock_fitting_1970</bcf:citekey>
+    <bcf:citekey order="53">levy_bayesian_2016</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">
