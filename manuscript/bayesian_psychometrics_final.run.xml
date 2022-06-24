@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>bayesian_psychometrics_xlv2.bcf</file>
+      <file>bayesian_psychometrics_final.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>bayesian_psychometrics_xlv2.bbl</file>
+      <file>bayesian_psychometrics_final.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -68,19 +68,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>bayesian_psychometrics_xlv2</infile>
+      <infile>bayesian_psychometrics_final</infile>
     </cmdline>
     <input>
-      <file>bayesian_psychometrics_xlv2.bcf</file>
+      <file>bayesian_psychometrics_final.bcf</file>
     </input>
     <output>
-      <file>bayesian_psychometrics_xlv2.bbl</file>
+      <file>bayesian_psychometrics_final.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>bayesian_psychometrics_xlv2.bbl</file>
+      <file>bayesian_psychometrics_final.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>bayesian_psychometrics_xlv2.bcf</file>
+      <file>bayesian_psychometrics_final.bcf</file>
     </requires>
     <requires type="editable">
       <file>lit.bib</file>

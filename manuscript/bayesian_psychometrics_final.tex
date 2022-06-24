@@ -12,6 +12,9 @@
 
 \authorsnames{Xiang Liu, Matthew S. Johnson, Zhuangzhuang Han}
 \authorsaffiliations{Educational Testing Service}
+\authornote{Correspondence should be made to Xiang Liu, Educational Testing
+Service, 03-T, 660 Rosedale Road, Princeton, NJ 08541, USA. Email:
+xliu003@ets.org}
 \keywords{Bayesian, psychometrics, IRT, MCMC, posterior predictive model checks}
 \abstract{The application of Bayesian methods in psychometrics is getting
 popular. It offers a set powerful and flexible statistical tools for analyzing
@@ -25,23 +28,24 @@ and model fit evaluation. These concepts are demonstrated by using a simple
 \section{Introduction}
 Bayesian statistical methods have become popular in the field of psychometrics.
 Thanks to the development of general purpose Bayesian inference software (e.g.,
-\emph{Stan}; \cite{gelman_stan:_2015}), researchers are now able to quickly develop and
-fit sophisticated and complex psychometric models that once required significant
-computational expertise to estimate. \textcite{levy_rise_2009} gives a nice overview
-and survey of the applications of Bayesian estimation for psychometric models.
-Some examples of development in this area may include Bayesian estimation of a
-broad class of cognitive diagnostic models 
-\parencite{liu_estimating_2019,culpepper_bayesian_2015}, the
-extended marginal Rasch model \parencite{maris_gibbs_2015}, a multilevel item
-response theory (IRT) model \parencite{fox_bayesian_2001}, and an unfolding
-response model \parencite{johnson_using_2003}. In addition, Bayesian
+\emph{Stan}; \cite{gelman_stan:_2015}), researchers are now able to quickly
+develop and fit sophisticated and complex psychometric models that once required
+significant computational expertise to estimate. In addition, Bayesian
 methods also provide a class of approaches alternative to classical or
 frequentist statistics (e.g. maximum likelihood, confidence intervals,
 p-values). In certain cases, Bayesian approaches can alleviate some difficulties
-classical approaches may have. Examples of the use of Bayesian methods for psychometric modeling include estimating uncertain elements of the Q-matrix in a CDM
-model \parencite{decarlo_recognizing_2012}, nonparametric ordered latent class
-modeling \parencite{liu_three_2019}, robust IRT outlier detection 
-\parencite{ozturk_bayesian_2017}, and evaluating model fit 
+classical approaches may have. There is abundant literature on applying Bayesian
+methods to pscyhometric modeling. \textcite{levy_rise_2009} gives a nice
+overview and survey of the applications of Bayesian estimation for psychometric
+models. Some specific examples include Bayesian estimation of a broad class of
+cognitive diagnostic models 
+\parencite{liu_estimating_2019,culpepper_bayesian_2015}, the extended marginal
+Rasch model \parencite{maris_gibbs_2015}, a multilevel item response theory 
+(IRT) model \parencite{fox_bayesian_2001}, and an unfolding response model 
+\parencite{johnson_using_2003}. Other examples include estimating uncertain
+elements of the Q-matrix in a CDM model \parencite{decarlo_recognizing_2012},
+nonparametric ordered latent class modeling \parencite{liu_three_2019}, robust
+IRT outlier detection \parencite{ozturk_bayesian_2017}, and evaluating model fit
 \parencite{sinharay_assessing_2007,sinharay_assessing_2005,sinharay_assessment_2015}. These mentioned examples of Bayesian methods in psychometrics are far from exhaustive.
 The main purpose of this entry is to give readers a brief introduction to some
 of the most essential concepts and steps involved in a Bayesian analysis of
@@ -52,10 +56,9 @@ Let $\bm{X}$ denote the observed random variables (i.e. the data), and $
 \bm{\theta}$ denote the vector of unobserved random variables (i.e. the
 parameters). In Bayesian statistics, the parameters are treated as random and
 are given prior distributions. This is in contrast to the classical likelihood
-methods where parameters are treated as fixed but unknown parameters. We are
-typically interested in using the data to estimate and make inferences about the
-vector of unknown parameters. A Bayesian analysis involves three essential
-steps:
+methods where parameters are treated as fixed but unknown. We are typically
+interested in using the data to estimate and make inferences about the vector of
+unknown parameters. A Bayesian analysis involves three essential steps:
 \begin{enumerate}
   \item Model specification. In this step, we set up a full probability model
   that describes the joint probability distribution for all observed and
@@ -287,9 +290,10 @@ Once the samples are drawn, to make inferences about parameters, we need to
 summarize the posterior distribution. Typically, we use mean, mode, and median
 to describe the central tendencies of the posterior distribution and serve as a
 point estimate. Among them, posterior mean is probably the most common. In
-addition the point estimate, the variance or standard deviation can be used to
-describe the dispersion of the posterior distribution. We may also be interested
-in forming posterior intervals which is referred to as the credible intervals.
+addition to the point estimate, the variance or standard deviation can be used
+to describe the dispersion of the posterior distribution. We may also be
+interested in forming posterior intervals which is referred to as the credible
+intervals.
 One way to construct a $100(1-\alpha)\%$ credible interval is to form the
 equal-tailed interval, i.e. $I_\alpha = [\theta_{\alpha/2}, \theta_
 {1-\alpha/2}]$, where $\theta_z$ is the $z$-quantile of the posterior. However,
@@ -384,10 +388,10 @@ The observed sum scores all fall within the $80\%$ HPD intervals of the posterio
 predictive distributions. For a given set of observed data and a chosen
 model, the choice of the level of HPD intervals has an effect on their
 lengths. The smaller percentages are associated with shorter intervals,
-therefore representing a more strict criteria for evaluating model fit. The
-$80\%$ level is the default in the \textit{Stan} software which is widely used
-by applied researchers. In our case, The model does seem to be able to explain
-the distribution of number of correct responses well.
+therefore representing a more strict criteria for evaluating model fit. Compared
+to higher levels such as $90\%$ or $95\%$, using a $80\%$ HPD intervals leads to
+higher chances of detecting model misfits. In our case, the model does seem to
+be able to explain the distribution of number of correct responses well.
 
 \subsection{Polychoric correlation coefficient}
 An important assumption of the 1PNO IRT model is that discrimination parameters
